@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="com.nicholas.user.User"/>
+<fullyQualifiedTypeName name="javax.xml.bind.annotation.XmlRootElement"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="org.json.JSONArray"/>
+<fullyQualifiedTypeName name="com.nicholas.jersey.models.Client"/>
+<fullyQualifiedTypeName name="ForHire.Hello"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="com.nicholas.jersey.persistence.HibernateDatabaseClientManager"/>
+<fullyQualifiedTypeName name="java.util.Arrays"/>
+<fullyQualifiedTypeName name="javax.xml.bind.annotation.XmlElement"/>
+<fullyQualifiedTypeName name="com.fasterxml.jackson.annotation.JsonIgnore"/>
+<fullyQualifiedTypeName name="javax.persistence.CascadeType"/>
+<fullyQualifiedTypeName name="com.nicholas.jersey.models.Review"/>
+<fullyQualifiedTypeName name="com.nicholas.jersey.models.ClientRating"/>
+<fullyQualifiedTypeName name="javax.ws.rs.POST"/>
+</qualifiedTypeNameHistroy>

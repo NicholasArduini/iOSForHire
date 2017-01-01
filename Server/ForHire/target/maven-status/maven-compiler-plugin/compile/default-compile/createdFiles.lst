@@ -1,0 +1,14 @@
+com/nicholas/jersey/persistence/HibernateDatabaseClientManager.class
+com/nicholas/user/User.class
+com/nicholas/jersey/common/Messages.class
+ForHire/EncryptionResource.class
+com/nicholas/jersey/persistence/HibernateUtil.class
+ForHire/StartApplication.class
+com/nicholas/jersey/models/Client.class
+com/nicholas/jersey/persistence/AbstractHibernateDatabaseManager.class
+com/nicholas/jersey/persistence/HibernateDatabaseCounterManager.class
+com/nicholas/jersey/LoggerManager.class
+ForHire/Authentication.class
+ForHire/Hello.class
+com/nicholas/jersey/models/Counter.class
+com/nicholas/rest/encrypt/AESEncrypter.class

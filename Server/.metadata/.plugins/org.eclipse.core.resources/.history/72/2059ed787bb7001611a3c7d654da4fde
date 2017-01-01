@@ -1,0 +1,98 @@
+package com.nicholas.jersey.testing;
+
+import com.nicholas.jersey.models.Client;
+//import com.nicholas.jersey.models.Review;
+import com.nicholas.jersey.persistence.*;
+import com.nicholas.rest.encrypt.AESEncrypter;
+
+import static org.junit.Assert.*;
+
+import java.util.List;
+
+import org.junit.Before;
+import org.junit.Test;
+
+public class HibernateClientManagerTestCase {
+	
+	@Before
+	@Test
+	public void testCreatDropTable() {
+		HibernateUtil.getCurrentSession();
+		assertTrue(HibernateDatabaseClientManager.getDefault().setupTable());
+		assertEquals(0, HibernateDatabaseClientManager.getDefault().getNumberOfClients());
+		assertTrue(HibernateDatabaseReviewManager.getDefault().setupTable());
+		assertEquals(0, HibernateDatabaseReviewManager.getDefault().getNumberOfReviews());
+	}
+	
+	@SuppressWarnings("static-access")
+	private String issueToken(String username) throws Exception {
+		try {
+			AESEncrypter encrypter = AESEncrypter.getDefaultEncrypter();
+			return encrypter.encrypt(username);
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new Exception("Failed to create encrypted token");
+		}
+	}
+	
+	//["Electrical", "Painting", "Landscaping", "Electronics", "Windows & Doors", "HVAC", "Pools"]
+	
+	@Test
+	public void testClientTable() throws Exception {
+		String[] c1Cat = {"Electrical", "Painting", "Landscaping", "Electronics", "Windows & Doors", "HVAC", "Pools"};
+		Client c1 = new Client("arduininicholas@gmail.com", "123456", "4169971958", "Nicholas Arduini", "This is a personal description", c1Cat, "Woodbridge", "Ottawa, ON", "Personal");
+		String c1userToken = issueToken(c1.getEmailAddress());
+		//System.out.println(c1userToken);
+		c1.setUserToken(c1userToken);
+		//c1.setRating("4");
+		
+		String[] c2Cat = {"Electrical", "Electronics"};
+		String des2 = "An American billionaire playboy, business magnate, and ingenious engineer, Tony Stark suffers a severe chest injury during a kidnapping in which his captors attempt to force him to build a weapon of mass destruction. He instead creates a powered suit of armor to save his life and escape captivity. Later, Stark augments his suit with weapons and other technological devices he designed through his company, Stark Industries. He uses the suit and successive versions to protect the world as Iron Man, while at first concealing his true identity. Initially, Iron Man was a vehicle for Stan Lee to explore Cold War themes, particularly the role of American technology and business in the fight against communism.[1] Subsequent re-imaginings of Iron Man have transitioned from Cold War themes to contemporary concerns, such as corporate crime and terrorism"
+		Client c2 = new Client("arduini@gmail.com", "123456", "4169971958", "Tony Stark Electrical", "Everyone needs a side job", c2Cat, "Stark Tower", "Ottawa, ON", "Buisness");
+		String c2userToken = issueToken(c2.getEmailAddress());
+		c2.setUserToken(c2userToken);
+		//c2.setRating("5");
+		
+		String[] c3Cat = {"Pools", "HVAC", "Landscaping"};
+		Client c3 = new Client("nicholas@gmail.com", "123456", "4169971958", "Auqa Man's Everything Water ", "Everyone needs a side job", c3Cat, "Pacific Ocean", "Ottawa, ON", "Buisness");
+		String c3userToken = issueToken(c3.getEmailAddress());
+		c3.setUserToken(c3userToken);
+		//c3.setRating("3");
+		
+		
+		
+		
+		String[] c4Cat = {"Electrical", "Painting", "Landscaping", "Electronics", "Windows & Doors", "HVAC", "Pools"};
+		Client c4 = new Client("ni@gmail.com", "123456", "4169971958", "Everything TO", "Description", c4Cat, "Pacific Ocean", "Toronto, ON", "Buisness");
+		String c4userToken = issueToken(c4.getEmailAddress());
+		c4.setUserToken(c4userToken);
+		//c4.setRating("5");
+		
+		//Review r1 = new Review("4", "5", "5", "This is a review", "Electrical", "arduini@gmail.com", "arduininicholas@gmail.com");
+		//c1.addReview(r1);
+		
+		assertTrue(HibernateDatabaseClientManager.getDefault().add(c1));
+		assertTrue(HibernateDatabaseClientManager.getDefault().add(c2));
+		assertTrue(HibernateDatabaseClientManager.getDefault().add(c3));
+		assertTrue(HibernateDatabaseClientManager.getDefault().add(c4));
+		
+		
+		Client dataBaseClient = HibernateDatabaseClientManager.getDefault().getClientByEmailAddress(c1.getEmailAddress());
+		assertEquals(dataBaseClient.getEmailAddress(), c1.getEmailAddress());
+		
+		//String[] testCat = {"Electrical"};
+		List<Client> ottawaClients = HibernateDatabaseClientManager.getDefault().getClientsByRegionAndCategory("Ottawa, ON", "Electrical");
+		//System.out.println(ottawaClients.size());
+		for(int i = 0; i < ottawaClients.size(); i++){
+			if(ottawaClients.get(i).getReviews().size() > 0){
+				//System.out.println(ottawaClients.get(i).getReviews().get(0).getReviewText());
+			}
+		}
+		
+		
+		assertEquals(0, HibernateDatabaseReviewManager.getDefault().getNumberOfReviews());
+	}
+	
+	
+}

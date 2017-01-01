@@ -1,0 +1,4 @@
+0:0:0:0:0:0:0:1 - - [12/Nov/2016:15:48:45 -0500] "GET /Assignment1/encryption/login HTTP/1.1" 404 1056
+0:0:0:0:0:0:0:1 - - [12/Nov/2016:15:48:45 -0500] "GET /Assignment1/encryption/login/user?=13m0PpmQu31bwDCt9gXjvlMh2HY6JjJTR2KCTFmAXEY= HTTP/1.1" 404 1066
+0:0:0:0:0:0:0:1 - - [12/Nov/2016:15:48:46 -0500] "GET /Assignment1/encryption/login/user?13m0PpmQu31bwDCt9gXjvlMh2HY6JjJTR2KCTFmAXEY= HTTP/1.1" 404 1066
+0:0:0:0:0:0:0:1 - - [12/Nov/2016:15:48:46 -0500] "GET /Assignment1/encryption/login/user? HTTP/1.1" 404 1066
