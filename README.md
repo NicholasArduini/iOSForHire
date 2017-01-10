@@ -9,7 +9,7 @@
 * From your own profile you can edit account information, change password, delete account, logout, and edit available categories
 
 ## Architecture
-* TOMCAT server implementing Jersey endpoints from the RESTful web framework
+* Tomcat server implementing Jersey endpoints from the RESTful web framework
 * SQL database using the Hibernate mapping framework in Java
 * Implementing the Alamofire and SwiftyJSON frameworks in Swift to make HTTP requests and easily parse JSON.
 
