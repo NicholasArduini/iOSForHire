@@ -13,7 +13,7 @@
 * SQL database using the Hibernate mapping framework in Java
 * Implementing the Alamofire and SwiftyJSON frameworks in Swift to make HTTP requests and easily parse JSON.
 
-##Future Work
+## Future Work
 * Looking for ads
 	* Track all previous bids
 	* View profiles of all bidders to make a decision
